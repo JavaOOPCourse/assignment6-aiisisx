@@ -1,27 +1,32 @@
+import java.util.Objects;
+
 public class Course {
-    private String name;
+
+    String name;
 
     public Course(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    // TODO: Task 4 — Обязательно переопредели (иначе HashMap не будет работать!)
     @Override
-    public boolean equals(Object o) {
-        return false; // заглушка
+    public boolean equals(Object obj) {
+
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Course course = (Course) obj;
+
+        return Objects.equals(name, course.name);
     }
 
     @Override
     public int hashCode() {
-        return 0; // заглушка
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Course: " + name;
+        return name;
     }
 }
